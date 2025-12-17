@@ -1,6 +1,7 @@
 # Cucumber Test Otomasyon Ödevi
 
-Bu proje, verilen ödev kapsamında **Cucumber (BDD)** yaklaşımı kullanılarak hazırlanmış iki farklı web test senaryosunu içermektedir.  
+Bu proje, verilen ödev kapsamında **Cucumber (BDD)** yaklaşımı 
+kullanılarak hazırlanmış iki farklı web test senaryosunu içermektedir.
 Test otomasyonunda **Selenide**, **Cucumber** ve **TestNG** birlikte kullanılmıştır.
 
 ---
@@ -69,12 +70,3 @@ Alternatif olarak Maven ile:
 ```bash
 mvn test
 ```
-
----
-
-## Notlar
-
-- Page Object Model (POM) yapısı kullanılmıştır
-- Ortak alanlar için **enum (Field)** yapısı tercih edilmiştir
-- Assertion işlemleri AssertJ ile yapılmıştır
-- Kodlar sade ve okunabilir olacak şekilde yazılmıştır  
