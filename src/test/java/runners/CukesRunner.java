@@ -8,7 +8,11 @@ import io.cucumber.testng.CucumberOptions;
         features = "src/test/resources/features",
         glue = "step_definitions",
         tags = "",
-        plugin = {"pretty", "html:target/cucumber-reports.html"} // Raporlama ayarı
+        plugin = {
+                "pretty",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+        }
+
 )
 public class CukesRunner extends AbstractTestNGCucumberTests {
 }

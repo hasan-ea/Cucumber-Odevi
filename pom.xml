@@ -12,9 +12,13 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <testng.version>7.0.0</testng.version>
         <selenide.version>6.19.1</selenide.version>
         <cucumber.version>7.14.0</cucumber.version>
+
+        <!-- Allure -->
+        <allure.version>2.27.0</allure.version>
     </properties>
 
     <dependencies>
@@ -39,7 +43,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Cucumber Java (Java ile Gherkin arasındaki bağlantı) -->
+        <!-- Cucumber Java -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -47,7 +51,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Cucumber TestNG (TestNG üzerinden çalıştırmayı sağlayan Runner) -->
+        <!-- Cucumber TestNG -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
@@ -55,7 +59,40 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Allure Cucumber 7 Adapter (step'lerin Allure'a dusmesi icin) -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Allure TestNG entegrasyonu (TestNG raporlama icin) -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
+    <build>
+        <plugins>
+
+            <!-- TestNG/Cucumber testlerini Maven'dan stabil koşturmak -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <allure.results.directory>target/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>
